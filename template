@@ -1,0 +1,15 @@
+# Setup Listening Port
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+    ServerName {name}
+    ServerAlias www.{name}
+    DocumentRoot {directory}
+
+    <Directory {directory}> 
+        Options Indexes FollowSymLinks Includes
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
