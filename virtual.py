@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 from optparse import OptionParser
 import os
@@ -17,11 +17,16 @@ template.close()
 
 virtualHostText = virtualHostText.format( name = options.name, directory = options.directory )
 
-fileNameVirtualHost = '/etc/apache2/sites-available/{0}.conf'.format(options.name)
+fileNameVirtualHost = '/etc/apache2/sites-available/{0}'.format(options.name)
 fileVirtualHost = open( fileNameVirtualHost, 'w' )
 fileVirtualHost.write( virtualHostText )
 fileVirtualHost.close()
 
-os.symlink( fileNameVirtualHost, '/etc/apache2/sites-enabled/{0}.conf'.format(options.name) )
 
+fileNameSystemHost = '/etc/hosts'
+fileSystemHost = open( fileNameSystemHost, 'a' )
+fileSystemHost.write( '127.0.0.1  {0}'.format(options.name))
+fileSystemHost.close()
+
+os.system('a2ensite {0}'.format(options.name))
 os.system('/etc/init.d/apache2 restart')
