@@ -1,5 +1,5 @@
 # Setup Listening Port
-NameVirtualHost *:80
+#NameVirtualHost *:80
 
 <VirtualHost *:80>
     ServerName {name}
@@ -8,7 +8,7 @@ NameVirtualHost *:80
 
     <Directory {directory}> 
         Options Indexes FollowSymLinks Includes
-        AllowOverride All
+        #AllowOverride All
         Order allow,deny
         Allow from all
     </Directory>
