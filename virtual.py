@@ -17,6 +17,7 @@ virtualHostText = template.read()
 template.close()
 
 
+
 # leer el archivo host
 fileHosts = open(path_sys_hosts, 'r')
 text_host = fileHosts.read();
@@ -31,10 +32,12 @@ if text_host.find("{0}".format(options.name)) < 0:
 virtualHostText = virtualHostText.format( name = options.name,  directory = options.directory )
 
 fileNameVirtualHost = path_apache_vhost.format(options.name)
+fileNameVirtualHost = '/etc/apache2/sites-available/{0}'.format(options.name)
 fileVirtualHost = open( fileNameVirtualHost, 'w' )
 fileVirtualHost.write( virtualHostText )
 fileVirtualHost.close()
 
+# activa el nuevo stio y reinicia apache2
 os.system('a2ensite {0}'.format(options.name))
-
 os.system('service apache2 restart')
+
