@@ -12,7 +12,9 @@ parser.add_option( "-n", "--name", dest="name", help="Name of the virtual host",
 
 (options, args) = parser.parse_args()
 
-template = open( 'template', 'r' )
+template_dir_path = os.path.join(os.path.dirname(__file__), 'template')
+
+template = open( template_dir_path, 'r' )
 virtualHostText = template.read()
 template.close()
 
