@@ -28,7 +28,7 @@ fileHosts.close()
 # comprueba que no exista la entrada en el archivo host
 if text_host.find("{0}".format(options.name)) < 0:
   fileHosts = open(path_sys_hosts, 'a')
-  fileHosts.write("127.0.0.1 {0}".format(options.name))
+  fileHosts.write("127.0.0.1 {0}\n".format(options.name))
   fileHosts.close()
 
 virtualHostText = virtualHostText.format( name = options.name,  directory = options.directory )

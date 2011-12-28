@@ -12,5 +12,5 @@
         Order allow,deny
         Allow from all
     </Directory>
-    Alias /sf "/usr/share/php/data/symfony/web/sf"
+    #Alias /sf "/usr/share/php/data/symfony/web/sf"
 </VirtualHost>
